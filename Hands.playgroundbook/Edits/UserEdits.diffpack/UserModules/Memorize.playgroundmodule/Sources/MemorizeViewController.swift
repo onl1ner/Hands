@@ -99,8 +99,6 @@ extension MemorizeViewController : GameOverViewDelegate {
 
 extension MemorizeViewController : HandDetectionViewDelegate {
     public func detected(hand : Hand) -> () {
-        DispatchQueue.main.async {
-            self.managerView.process(hand: hand)
-        }
+        self.managerView.process(hand: hand)
     }
 }

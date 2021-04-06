@@ -158,7 +158,10 @@ final class HandDetectionView : UIView {
         let hand = Hand(thumbFinger: thumb, indexFinger: index, 
                         middleFinger: middle, ringFinger: ring, 
                         littleFinger: little, wrist: wrist)
-        self.delegate?.detected(hand: hand)
+        
+        DispatchQueue.main.async {
+            self.delegate?.detected(hand: hand)
+        }
     }
     
     public func startDetecting() -> () {

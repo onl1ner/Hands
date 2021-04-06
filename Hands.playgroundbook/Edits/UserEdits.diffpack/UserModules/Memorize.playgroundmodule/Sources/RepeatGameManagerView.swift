@@ -58,13 +58,37 @@ final class RepeatGameManagerView : UIView {
     private let travelTime : Double = 10.0
     
     /// Maximum ratio that can be reached by user.
-    private let maxStepRatio : Double = 8.0
+    private let maxStepRatio : Double = 6.0
     
     /// Ratio that indicates the frequency of sequence.
     private var stepRatio : Double = 4.0
     
+    /// Indicates how many gestures user showed.
+    private var showedGestureAmount : Int = 0
+    
     /// Gesture queue of presenting sequence. First element is the gesture that user have to show.
-    private var gestureQueue : [HandGesture] = .init()
+    private var gestureQueue : [(gesture : HandGesture, isProcessed : Bool)] = .init()
+    
+    private func scheduleInstance() -> () {
+        Timer.scheduledTimer(withTimeInterval: self.travelTime / self.stepRatio, repeats: false) { _ in
+            self.instanceHand()
+            
+            Timer.scheduledTimer(withTimeInterval: self.travelTime / 2 - 0.5, repeats: false) { _ in
+                self.delegate?.shouldStartHandDetection()
+            }
+            
+            Timer.scheduledTimer(withTimeInterval: self.travelTime / 2 + 0.5, repeats: false) { _ in
+                self.delegate?.shouldStopHandDetection()
+                
+                if !(self.gestureQueue.first?.isProcessed ?? false) {
+                    self.showStatus(isRightGesture: false)
+                    self.attemptManagerView.decrementAttempt()
+                }
+                
+                self.gestureQueue.removeFirst()
+            }
+        }
+    }
     
     private func instanceHand() -> () {
         let gesture = self.possibleHandGestures.randomElement()!
@@ -79,7 +103,7 @@ final class RepeatGameManagerView : UIView {
                               width: 64 + 32, height: 64 + 32)
         
         self.sequenceView.insertSubview(gestureView, belowSubview: self.focusRectView)
-        self.gestureQueue.append(gesture)
+        self.gestureQueue.append((gesture: gesture, isProcessed: false))
         
         UIView.animateKeyframes(withDuration: self.travelTime, delay: 0.0, options: [], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1.0) { 
@@ -96,6 +120,20 @@ final class RepeatGameManagerView : UIView {
             }
         }) { _ in 
             gestureView.removeFromSuperview()
+        }
+        
+        self.scheduleInstance()
+    }
+    
+    private func incrementShowedGestureAmount() -> () {
+        self.showedGestureAmount += 1
+        
+        if self.showedGestureAmount % 4 == 0 {
+            self.levelManagerView.incrementLevel()
+            
+            if self.stepRatio < self.maxStepRatio {
+                self.stepRatio += 0.2
+            }
         }
     }
     
@@ -115,18 +153,7 @@ final class RepeatGameManagerView : UIView {
     }
     
     private func start() -> () {
-        let timer = Timer.scheduledTimer(withTimeInterval: self.travelTime / self.stepRatio, repeats: true) { _ in
-            self.instanceHand()
-            
-            Timer.scheduledTimer(withTimeInterval: self.travelTime / 2 - 0.5, repeats: false) { _ in
-                self.delegate?.shouldStartHandDetection()
-            }
-            
-            Timer.scheduledTimer(withTimeInterval: self.travelTime / 2 + 0.5, repeats: false) { _ in
-                self.delegate?.shouldStopHandDetection()
-                self.gestureQueue.removeFirst()
-            }
-        }
+        self.scheduleInstance()
     }
     
     private func applyConstraints() -> () {
@@ -151,12 +178,16 @@ final class RepeatGameManagerView : UIView {
     }
     
     public func process(hand : Hand) -> () {
-        guard let gesture = self.gestureQueue.first else { return }
+        guard let gesture = self.gestureQueue.first?.gesture else { return }
+        
+        self.gestureQueue[0].isProcessed = true
         
         if hand.shows(gesture: gesture) {
             self.showStatus(isRightGesture: true)
+            self.incrementShowedGestureAmount()
         } else {
             self.showStatus(isRightGesture: false)
+            self.attemptManagerView.decrementAttempt()
         }
     }
     
