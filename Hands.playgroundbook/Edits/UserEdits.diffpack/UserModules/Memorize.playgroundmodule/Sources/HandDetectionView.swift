@@ -1,18 +1,16 @@
 import UIKit
 import Vision
 import AVFoundation
-import Extensions
 
-public protocol HandDetectionViewDelegate : class {
+protocol HandDetectionViewDelegate : class {
     func detected(hand : Hand) -> ()
 }
 
-final public class HandDetectionView : UIView {
+final class HandDetectionView : UIView {
     
     private let handRequest : VNDetectHumanHandPoseRequest = {
         let request = VNDetectHumanHandPoseRequest()
         request.maximumHandCount = 1
-        request.regionOfInterest
         return request
     }()
     
@@ -189,7 +187,7 @@ final public class HandDetectionView : UIView {
         self.delegate = delegate
     }
     
-    override public init(frame: CGRect) {
+    override internal init(frame: CGRect) {
         super.init(frame: frame)
         
         self.setupSession()

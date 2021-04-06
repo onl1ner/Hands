@@ -62,7 +62,7 @@ final public class HomeHintView : UIView {
         self.textLabel.text = text
     }
     
-    override internal init(frame : CGRect) {
+    override public init(frame : CGRect) {
         super.init(frame: frame)
         
         self.addSubview(self.infoSymbolImageView)

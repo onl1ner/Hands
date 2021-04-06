@@ -1,10 +1,10 @@
 import UIKit
 
-protocol MemorizeGameOverViewDelegate : class {
+protocol GameOverViewDelegate : class {
     func shouldProceedToMainMenu() -> ()
 }
 
-final class MemorizeGameOverView : UIView {
+final class GameOverView : UIView {
     
     private lazy var levelLabel : UILabel = {
         let label = UILabel()
@@ -83,12 +83,13 @@ final class MemorizeGameOverView : UIView {
         return view
     }()
     
-    private weak var delegate : MemorizeGameOverViewDelegate?
+    private weak var delegate : GameOverViewDelegate?
+    
+    private var lowLevelText : String = "You lost"
+    private var highLevelText : String = "You lost"
     
     @objc private func mainMenuButtonPressed() -> () {
-        self.hide {
-            self.delegate?.shouldProceedToMainMenu()
-        }
+        self.hide { self.delegate?.shouldProceedToMainMenu() }
     }
     
     private func hide(completion: @escaping () -> ()) -> () {
@@ -127,7 +128,7 @@ final class MemorizeGameOverView : UIView {
     
     public func show(with level : Int) -> () {
         self.levelLabel.text = String(level)
-        self.textLabel.text = level > 4 ? "You have perfectly trained your memory, do such training regularly and you will immediately notice the result." : "Conduct such training regularly and you will immediately notice the result."
+        self.textLabel.text = level > 4 ? self.lowLevelText : self.highLevelText
         
         UIView.animate(withDuration: 0.2, animations: { 
             self.alpha = 1.0
@@ -139,8 +140,12 @@ final class MemorizeGameOverView : UIView {
         }
     }
     
-    public convenience init(delegate : MemorizeGameOverViewDelegate?) {
+    public convenience init(lowLevelText : String, highLevelText : String, delegate : GameOverViewDelegate?) {
         self.init()
+        
+        self.lowLevelText = lowLevelText
+        self.highLevelText = highLevelText
+        
         self.delegate = delegate
     }
     

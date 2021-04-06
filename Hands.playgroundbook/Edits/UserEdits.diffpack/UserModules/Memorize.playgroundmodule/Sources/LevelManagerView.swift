@@ -1,6 +1,6 @@
 import UIKit
 
-final public class LevelManagerView : UIView {
+final class LevelManagerView : UIView {
     
     private lazy var currentLevelLabel : UILabel = {
         let label = UILabel()
@@ -51,7 +51,7 @@ final public class LevelManagerView : UIView {
         self.currentLevel += 1
     }
     
-    override public init(frame : CGRect) {
+    override internal init(frame : CGRect) {
         super.init(frame: frame)
         
         self.stackView.addArrangedSubview(self.currentLevelLabel)
@@ -68,7 +68,7 @@ final public class LevelManagerView : UIView {
         
         self.applyConstraints()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -1,6 +1,6 @@
 import UIKit
 
-final class MemorizeHandGestureView : UIView {
+final class HandGestureView : UIView {
     
     private lazy var handGestureImageView : UIImageView = {
         let imageView = UIImageView()

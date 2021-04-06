@@ -1,7 +1,7 @@
 
 import UIKit
 
-final public class HomeButton : UIButton {
+final class HomeButton : UIButton {
     
     private lazy var textLabel : UILabel = {
         let label = UILabel()
@@ -57,7 +57,7 @@ final public class HomeButton : UIButton {
         self.symbolImageView.image = UIImage(systemName: symbolName)
     }
     
-    override public init(frame: CGRect) {
+    override internal init(frame: CGRect) {
         super.init(frame: frame)
         
         self.addSubview(self.textLabel)

@@ -1,11 +1,11 @@
 import UIKit
 
-protocol MemorizeIntroViewDelegate : class {
+protocol IntroViewDelegate : class {
     func shouldStartGame() -> ()
     func shouldCloseGame() -> ()
 }
 
-final class MemorizeIntroView : UIView {
+final class IntroView : UIView {
     
     private lazy var titleLabel : UILabel = {
         let label = UILabel()
@@ -21,8 +21,6 @@ final class MemorizeIntroView : UIView {
         let label = UILabel()
         
         label.font = .systemFont(ofSize: 18.0)
-        label.text = "Memorize the sequence that will be shown in the beginning and repeat it."
-        
         label.numberOfLines = 0
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +88,7 @@ final class MemorizeIntroView : UIView {
         return view
     }()
     
-    private weak var delegate : MemorizeIntroViewDelegate?
+    private weak var delegate : IntroViewDelegate?
     
     @objc private func playButtonPressed() -> () {
         self.hide {
@@ -138,8 +136,10 @@ final class MemorizeIntroView : UIView {
         ])
     }
     
-    public convenience init(delegate : MemorizeIntroViewDelegate?) {
+    public convenience init(text : String, delegate : IntroViewDelegate?) {
         self.init()
+        
+        self.textLabel.text = text
         self.delegate = delegate
     }
     

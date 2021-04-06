@@ -1,7 +1,7 @@
 import Foundation
 import Vision
 
-public struct Thumb {
+struct Thumb {
     public var tipPoint : CGPoint
     public var ipPoint : CGPoint
     public var mpPoint : CGPoint
@@ -28,7 +28,7 @@ public struct Thumb {
     }
 }
 
-public struct Finger {
+struct Finger {
     public var tipPoint : CGPoint
     public var dipPoint : CGPoint
     public var pipPoint : CGPoint
@@ -83,7 +83,7 @@ public struct Finger {
     }
 }
 
-public struct Hand {
+struct Hand {
     public var thumbFinger : Thumb
     public var indexFinger : Finger
     public var middleFinger : Finger

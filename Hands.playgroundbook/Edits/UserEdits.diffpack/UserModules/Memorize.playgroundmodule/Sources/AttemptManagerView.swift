@@ -1,6 +1,11 @@
+
 import UIKit
 
-final public class AttemptManagerView : UIView {
+protocol AttemptManagerViewDelegate : class {
+    func noAttemptsLeft() -> ()
+}
+
+final class AttemptManagerView : UIView {
     
     private lazy var currentAttemptLabel : UILabel = {
         let label = UILabel()
@@ -32,16 +37,14 @@ final public class AttemptManagerView : UIView {
         return stackView
     }()
     
+    private weak var delegate : AttemptManagerViewDelegate?
+    
     private var maxAttempts : Int = 0
     
     private var currentAttempt : Int = 0 {
         didSet {
             self.currentAttemptLabel.text = "\(self.currentAttempt) / \(self.maxAttempts)"
         }
-    }
-    
-    public var hasAttempts : Bool {
-        return self.currentAttempt - 1 > 0
     }
     
     private func applyConstraints() -> () {
@@ -59,12 +62,18 @@ final public class AttemptManagerView : UIView {
     }
     
     public func decrementAttempt() -> () {
-        guard self.currentAttempt > 0 else { return }
+        guard self.currentAttempt - 1 > 0 else {
+            self.delegate?.noAttemptsLeft()
+            return
+        }
+        
         self.currentAttempt -= 1
     }
     
-    public convenience init(maxAttempts : Int) {
+    public convenience init(maxAttempts : Int, delegate : AttemptManagerViewDelegate) {
         self.init()
+        
+        self.delegate = delegate
         
         self.maxAttempts = maxAttempts
         self.currentAttempt = maxAttempts
@@ -72,7 +81,7 @@ final public class AttemptManagerView : UIView {
         self.currentAttemptLabel.text = "\(self.currentAttempt) / \(self.maxAttempts)"
     }
     
-    override public init(frame : CGRect) {
+    override internal init(frame : CGRect) {
         super.init(frame: frame)
         
         self.stackView.addArrangedSubview(self.currentAttemptLabel)

@@ -1,14 +1,14 @@
 import UIKit
 
-final class MemorizeViewController : UIViewController {
+final class RepeatViewController : UIViewController {
     
-    private lazy var introView = IntroView(text: "Memorize the sequence that will be shown in the beginning and repeat it!", 
+    private lazy var introView = IntroView(text: "Repeat the gestures that will be in focus. The further you go, the faster new gestures appear!", 
                                            delegate: self)
-    private lazy var gameOverView = GameOverView(lowLevelText: "You have perfectly trained your memory, do such training regularly and you will immediately notice the result.",
+    private lazy var gameOverView = GameOverView(lowLevelText: "You have perfectly trained your reaction, do such training regularly and you will immediately notice the result.",
                                                  highLevelText: "Conduct such training regularly and you will immediately notice the result.",
                                                  delegate: self)
     
-    private lazy var managerView = MemorizeGameManagerView(delegate: self)
+    private lazy var managerView = RepeatGameManagerView(delegate: self)
     private lazy var handDetectionView = HandDetectionView(delegate: self)
     
     private func toMainMenu() -> () {
@@ -50,7 +50,7 @@ final class MemorizeViewController : UIViewController {
         ])
     }
     
-    override internal func viewDidLoad() -> () {
+    override public func viewDidLoad() -> () {
         super.viewDidLoad()
         
         self.view.addSubview(self.handDetectionView)
@@ -65,9 +65,10 @@ final class MemorizeViewController : UIViewController {
         
         self.handDetectionView.startSession()
     }
+    
 }
 
-extension MemorizeViewController : IntroViewDelegate {
+extension RepeatViewController : IntroViewDelegate {
     public func shouldStartGame() -> () {
         self.managerView.show()
     }
@@ -77,30 +78,28 @@ extension MemorizeViewController : IntroViewDelegate {
     }
 }
 
-extension MemorizeViewController : GameManagerDelegate {
-    public func shouldStartHandDetection() -> () {
+extension RepeatViewController : GameManagerDelegate {
+    public func shouldStartHandDetection() -> ()  {
         self.handDetectionView.startDetecting()
     }
     
-    public func shouldStopHandDetection() -> () {
+    public func shouldStopHandDetection() -> ()  {
         self.handDetectionView.stopDetecting()
     }
     
-    public func gameOver(level : Int) -> () {
-        self.gameOverView.show(with: level)
+    public func gameOver(level: Int) -> () {
+        
     }
 }
 
-extension MemorizeViewController : GameOverViewDelegate {
+extension RepeatViewController : GameOverViewDelegate {
     public func shouldProceedToMainMenu() -> () {
         self.toMainMenu()
     }
 }
 
-extension MemorizeViewController : HandDetectionViewDelegate {
+extension RepeatViewController : HandDetectionViewDelegate {
     public func detected(hand : Hand) -> () {
-        DispatchQueue.main.async {
-            self.managerView.process(hand: hand)
-        }
+        
     }
 }

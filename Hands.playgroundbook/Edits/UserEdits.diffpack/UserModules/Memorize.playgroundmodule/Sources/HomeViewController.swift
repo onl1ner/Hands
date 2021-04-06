@@ -81,7 +81,12 @@ final public class HomeViewController : UIViewController {
     }
     
     @objc private func repeatSequenceModeButtonPressed() -> () {
+        let repeatVC = RepeatViewController()
         
+        repeatVC.modalTransitionStyle = .crossDissolve
+        repeatVC.modalPresentationStyle = .fullScreen
+        
+        self.present(repeatVC, animated: true, completion: nil)
     }
     
     private func applyConstraints() -> () {

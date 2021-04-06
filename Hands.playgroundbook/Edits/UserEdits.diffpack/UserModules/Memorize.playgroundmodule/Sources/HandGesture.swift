@@ -1,7 +1,7 @@
 import UIKit
 import Vision
 
-public struct HandGesture {
+struct HandGesture {
     
     public var requiredFingers : [VNHumanHandPoseObservation.JointsGroupName]
     public var image : UIImage?
