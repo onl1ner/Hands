@@ -174,12 +174,12 @@ final class MemorizeGameManagerView : UIView {
         
         self.statusLabel.text = isRightGesture ? "Great 🥳" : "Try again 😕"
         
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.2) {
             let color : UIColor = isRightGesture ? .systemGreen : .systemPink
             self.backgroundColor = color.withAlphaComponent(0.2)
             self.statusLabel.alpha = 1.0
             self.statusLabel.transform = .identity
-        }) { _ in
+        } completion: { _ in
             UIView.animate(withDuration: 0.2, delay: 0.4, options: []) {
                 self.backgroundColor = .clear
                 self.statusLabel.alpha = 0.0

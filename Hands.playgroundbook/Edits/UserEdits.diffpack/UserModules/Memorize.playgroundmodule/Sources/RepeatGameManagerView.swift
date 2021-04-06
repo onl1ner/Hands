@@ -32,8 +32,8 @@ final class RepeatGameManagerView : UIView {
         
         view.backgroundColor = .clear
         
-        view.layer.borderColor = UIColor.systemBlue.cgColor
-        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor.systemGray3.cgColor
+        view.layer.borderWidth = 4
         
         view.layer.cornerRadius = 16.0
         
@@ -56,6 +56,9 @@ final class RepeatGameManagerView : UIView {
     
     /// Time that gesture view takes to travel from one side to another.
     private let travelTime : Double = 10.0
+    
+    /// Maximum ratio that can be reached by user.
+    private let maxStepRatio : Double = 8.0
     
     /// Ratio that indicates the frequency of sequence.
     private var stepRatio : Double = 4.0
@@ -96,16 +99,31 @@ final class RepeatGameManagerView : UIView {
         }
     }
     
+    private func showStatus(isRightGesture : Bool) -> () {
+        self.delegate?.shouldStopHandDetection()
+        
+        UIView.animate(withDuration: 0.2) { 
+            let color : UIColor = isRightGesture ? .systemGreen : .systemPink
+            self.focusRectView.backgroundColor = color.withAlphaComponent(0.4)
+            self.focusRectView.transform = .init(scaleX: 1.05, y: 1.05)
+        } completion: { _ in
+            UIView.animate(withDuration: 0.2, delay: 0.2) {
+                self.focusRectView.backgroundColor = .clear
+                self.focusRectView.transform = .identity
+            }
+        }
+    }
+    
     private func start() -> () {
-        let timer = Timer.scheduledTimer(withTimeInterval: self.travelTime / self.stepRatio, 
-                                         repeats: true) { _ in
+        let timer = Timer.scheduledTimer(withTimeInterval: self.travelTime / self.stepRatio, repeats: true) { _ in
             self.instanceHand()
             
             Timer.scheduledTimer(withTimeInterval: self.travelTime / 2 - 0.5, repeats: false) { _ in
-                print(self.gestureQueue.first)
+                self.delegate?.shouldStartHandDetection()
             }
             
             Timer.scheduledTimer(withTimeInterval: self.travelTime / 2 + 0.5, repeats: false) { _ in
+                self.delegate?.shouldStopHandDetection()
                 self.gestureQueue.removeFirst()
             }
         }
@@ -133,13 +151,19 @@ final class RepeatGameManagerView : UIView {
     }
     
     public func process(hand : Hand) -> () {
+        guard let gesture = self.gestureQueue.first else { return }
         
+        if hand.shows(gesture: gesture) {
+            self.showStatus(isRightGesture: true)
+        } else {
+            self.showStatus(isRightGesture: false)
+        }
     }
     
     public func show() -> () {
-        UIView.animate(withDuration: 0.2, animations: { 
+        UIView.animate(withDuration: 0.2) { 
             self.alpha = 1.0
-        }) { _ in
+        } completion: { _ in
             self.start()
         }
     }
@@ -147,6 +171,12 @@ final class RepeatGameManagerView : UIView {
     public func hide() -> () {
         UIView.animate(withDuration: 0.2) {
             self.alpha = 0.0
+        }
+    }
+    
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) -> () {
+        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            self.focusRectView.layer.borderColor = UIColor.systemGray3.cgColor
         }
     }
     

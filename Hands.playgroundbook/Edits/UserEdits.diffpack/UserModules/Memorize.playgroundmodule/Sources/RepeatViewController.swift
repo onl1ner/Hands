@@ -100,6 +100,6 @@ extension RepeatViewController : GameOverViewDelegate {
 
 extension RepeatViewController : HandDetectionViewDelegate {
     public func detected(hand : Hand) -> () {
-        
+        self.managerView.process(hand: hand)
     }
 }
