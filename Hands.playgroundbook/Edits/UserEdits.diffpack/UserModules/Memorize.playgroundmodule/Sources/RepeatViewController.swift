@@ -88,7 +88,7 @@ extension RepeatViewController : GameManagerDelegate {
     }
     
     public func gameOver(level: Int) -> () {
-        
+        self.gameOverView.show(with: level)
     }
 }
 

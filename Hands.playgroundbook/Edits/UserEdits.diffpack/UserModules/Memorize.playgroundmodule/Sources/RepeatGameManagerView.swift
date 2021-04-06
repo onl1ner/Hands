@@ -69,7 +69,12 @@ final class RepeatGameManagerView : UIView {
     /// Gesture queue of presenting sequence. First element is the gesture that user have to show.
     private var gestureQueue : [(gesture : HandGesture, isProcessed : Bool)] = .init()
     
+    /// Indicates whether 
+    private var isGameOver : Bool = false
+    
     private func scheduleInstance() -> () {
+        guard !self.isGameOver else { return }
+        
         Timer.scheduledTimer(withTimeInterval: self.travelTime / self.stepRatio, repeats: false) { _ in
             self.instanceHand()
             
@@ -80,7 +85,7 @@ final class RepeatGameManagerView : UIView {
             Timer.scheduledTimer(withTimeInterval: self.travelTime / 2 + 0.5, repeats: false) { _ in
                 self.delegate?.shouldStopHandDetection()
                 
-                if !(self.gestureQueue.first?.isProcessed ?? false) {
+                if !(self.gestureQueue.first?.isProcessed ?? false) && !self.isGameOver {
                     self.showStatus(isRightGesture: false)
                     self.attemptManagerView.decrementAttempt()
                 }
@@ -123,6 +128,14 @@ final class RepeatGameManagerView : UIView {
         }
         
         self.scheduleInstance()
+    }
+    
+    private func gameOver() -> () {
+        self.delegate?.shouldStopHandDetection()
+        
+        self.hide()
+        self.isGameOver = true
+        self.delegate?.gameOver(level: self.levelManagerView.currentLevel)
     }
     
     private func incrementShowedGestureAmount() -> () {
@@ -240,7 +253,7 @@ final class RepeatGameManagerView : UIView {
 extension RepeatGameManagerView : AttemptManagerViewDelegate {
     
     public func noAttemptsLeft() -> () {
-        
+        self.gameOver()
     }
     
 }
