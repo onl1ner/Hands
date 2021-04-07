@@ -16,7 +16,7 @@ In each mode, the difficulty of the game will increase as you progress. So for t
 
 In order to determine which gesture was shown by the user, the application recognizes which fingers were extended. **The extended fingers are determined by comparing the distances from each phalanx to the wrist.** So, for example, if the distance from the distal phalanx is greater than the distance from the intermediate phalanx, then the finger is marked as extended. This algorithm applies to all fingers except the thumb. **To determine whether the thumb is extended, the processing of the angle formed by the distal and metacarpal phalanges is added.**
 
-## Frameworks:
+## Frameworks
 
 I really like the new Apple SwiftUI framework for creating interfaces and its declarative style, which makes it easy to create cool interfaces, but here I decided to stop at UIKit, because I have more experience in using this technology. I also used the Vision framework to recognize the hand gestures that the user shows.
 

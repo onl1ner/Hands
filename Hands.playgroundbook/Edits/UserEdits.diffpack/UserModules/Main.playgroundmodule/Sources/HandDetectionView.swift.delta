@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>    @objc public func handleOrientationChange() -&gt; () {
+        let currentOrientation = UIDevice.current.orientation
+        print(currentOrientation.rawValue)
+        
+        switch currentOrientation {
+        case .landscapeLeft: self.cameraLayer?.connection?.videoOrientation = .landscapeLeft
+        case .landscapeRight: self.cameraLayer?.connection?.videoOrientation = .landscapeRight
+        case .portrait: self.cameraLayer?.connection?.videoOrientation = .portrait
+        case .portraitUpsideDown: self.cameraLayer?.connection?.videoOrientation = .portraitUpsideDown
+        default: break
+        }
+    }
+    
+</string>
+			<key>ModifiedRange</key>
+			<string>{750, 624}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{750, 0}</string>
+		</dict>
+		<dict>
+			<key>ModifiedContent</key>
+			<string></string>
+			<key>ModifiedRange</key>
+			<string>{2523, 0}</string>
+			<key>OriginalContent</key>
+			<string>    @objc private func handleOrientationChange(notification : NSNotification) -&gt; () {
+        let currentOrientation = UIDevice.current.orientation
+        print(currentOrientation.rawValue)
+        
+        switch currentOrientation {
+        case .landscapeLeft: self.cameraLayer?.connection?.videoOrientation = .landscapeLeft
+        case .landscapeRight: self.cameraLayer?.connection?.videoOrientation = .landscapeRight
+        case .portrait: self.cameraLayer?.connection?.videoOrientation = .portrait
+        case .portraitUpsideDown: self.cameraLayer?.connection?.videoOrientation = .portraitUpsideDown
+        default: break
+        }
+    }
+    
+</string>
+			<key>OriginalRange</key>
+			<string>{1899, 654}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>UserModules/Main.playgroundmodule/Sources/HandDetectionView.swift</string>
+</dict>
+</plist>

@@ -26,7 +26,14 @@
 			</dict>
 		</array>
 		<key>Modified</key>
-		<array/>
+		<array>
+			<dict>
+				<key>Diff</key>
+				<string>UserModules/Main.playgroundmodule/Sources/HandDetectionView.swift.delta</string>
+				<key>File</key>
+				<string>UserModules/Main.playgroundmodule/Sources/HandDetectionView.swift</string>
+			</dict>
+		</array>
 		<key>Removed</key>
 		<array/>
 		<key>Replaced</key>
