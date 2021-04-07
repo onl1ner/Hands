@@ -24,91 +24,11 @@
 				<key>File</key>
 				<string>Chapters/Chapter1.playgroundchapter/UserManifest.plist</string>
 			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/RepeatGameManagerView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/HandDetectionView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/GameOverView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/HomeViewController.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/HandGesture.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/MemorizeGameManagerView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/HomeHintView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/MemorizeViewController.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/HandGestureView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/GameManagerDelegate.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/CGPoint.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/Hand + Finger.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/RepeatViewController.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/HomeButton.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/AttemptManagerView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/IntroView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Main.playgroundmodule/Sources/LevelManagerView.swift</string>
-			</dict>
 		</array>
 		<key>Modified</key>
-		<array>
-			<dict>
-				<key>Diff</key>
-				<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift.delta</string>
-				<key>File</key>
-				<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
-			</dict>
-		</array>
+		<array/>
 		<key>Removed</key>
-		<array>
-			<dict>
-				<key>File</key>
-				<string>UserModules/UserModule.playgroundmodule/Sources/SharedCode.swift</string>
-			</dict>
-		</array>
+		<array/>
 		<key>Replaced</key>
 		<array/>
 	</dict>
