@@ -88,7 +88,7 @@ final class MemorizeGameManagerView : UIView {
     private weak var delegate : GameManagerDelegate?
     
     private func listenToUser() -> () {
-        /// Give user some time to think.
+        // Give user some time to think.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { 
             self.delegate?.shouldStartHandDetection()
             

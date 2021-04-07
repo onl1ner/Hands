@@ -26,75 +26,71 @@
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/MemorizeViewController.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/RepeatGameManagerView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Shared.playgroundmodule/Sources/SharedCode.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/HandDetectionView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/MemorizeGameManagerView.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/GameOverView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/HomeButton.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/HomeViewController.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/HomeHintView.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/HandGesture.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/HomeViewController.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/MemorizeGameManagerView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/AttemptManagerView.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/HomeHintView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/LevelManagerView.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/MemorizeViewController.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/CGPoint.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/HandGestureView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/RepeatViewController.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/GameManagerDelegate.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/RepeatGameManagerView.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/CGPoint.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/Hand + Finger.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/Hand + Finger.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/HandDetectionView.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/RepeatViewController.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/HandGesture.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/HomeButton.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/HandGestureView.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/AttemptManagerView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/GameManagerDelegate.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/IntroView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/IntroView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Memorize.playgroundmodule/Sources/GameOverView.swift</string>
+				<string>UserModules/Main.playgroundmodule/Sources/LevelManagerView.swift</string>
 			</dict>
 		</array>
 		<key>Modified</key>

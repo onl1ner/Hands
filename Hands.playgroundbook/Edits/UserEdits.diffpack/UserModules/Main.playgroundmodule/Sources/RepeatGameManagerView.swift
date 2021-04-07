@@ -55,10 +55,10 @@ final class RepeatGameManagerView : UIView {
     ]
     
     /// Time that gesture view takes to travel from one side to another.
-    private let travelTime : Double = 10.0
+    private let travelTime : Double = 7.0
     
     /// Maximum ratio that can be reached by user.
-    private let maxStepRatio : Double = 6.0
+    private let maxStepRatio : Double = 7.0
     
     /// Ratio that indicates the frequency of sequence.
     private var stepRatio : Double = 4.0
@@ -69,7 +69,7 @@ final class RepeatGameManagerView : UIView {
     /// Gesture queue of presenting sequence. First element is the gesture that user have to show.
     private var gestureQueue : [(gesture : HandGesture, isProcessed : Bool)] = .init()
     
-    /// Indicates whether 
+    /// Indicates whether the user has run out of attempts.
     private var isGameOver : Bool = false
     
     private func scheduleInstance() -> () {
@@ -101,7 +101,7 @@ final class RepeatGameManagerView : UIView {
         
         gestureView.alpha = 0.0
         
-        // 64 – stands for the size of the image
+        // 64 – stands for the size of the imageView
         // 32 – is the padding of the imageView, 16 by each side.
         gestureView.frame = .init(x: self.sequenceView.bounds.maxX,
                               y: self.sequenceView.bounds.midY - (64 + 32) / 2, 
