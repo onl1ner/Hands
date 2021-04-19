@@ -20,6 +20,9 @@ In order to determine which gesture was shown by the user, the application recog
 
 I really like the new Apple SwiftUI framework for creating interfaces and its declarative style, which makes it easy to create cool interfaces, but here I decided to stop at UIKit, because I have more experience in using this technology. I also used the Vision framework to recognize the hand gestures that the user shows.
 
+## Screenshots
+![](https://github.com/onl1ner/onl1ner/blob/master/Resources/Hands/Screenshots.png?raw=true)
+
 ## License
 **Hands** is under the terms and conditions of the MIT license.
 

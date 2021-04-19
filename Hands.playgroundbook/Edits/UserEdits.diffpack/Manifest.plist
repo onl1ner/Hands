@@ -24,6 +24,10 @@
 				<key>File</key>
 				<string>Chapters/Chapter1.playgroundchapter/UserManifest.plist</string>
 			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Main.playgroundmodule/Sources/CGPoint + Extension.swift</string>
+			</dict>
 		</array>
 		<key>Modified</key>
 		<array>
@@ -35,7 +39,12 @@
 			</dict>
 		</array>
 		<key>Removed</key>
-		<array/>
+		<array>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Main.playgroundmodule/Sources/CGPoint.swift</string>
+			</dict>
+		</array>
 		<key>Replaced</key>
 		<array/>
 	</dict>
